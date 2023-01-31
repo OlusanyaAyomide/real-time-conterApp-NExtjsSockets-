@@ -9,9 +9,7 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
-        console.log(credentials);
         if (credentials.refresh) {
-          console.log("refreshing......");
           const data = await datafetcher(credentials.refresh);
           if (data.access) {
             const decoded = jwt_decode(data.access);

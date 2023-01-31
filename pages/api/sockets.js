@@ -24,7 +24,7 @@ export default function handler(req, res) {
         const fetcher = async () => {
           const res = await fetch("http://127.0.0.1:8000/change?type=decrease");
           const { count } = await res.json();
-          socket.broadcast.emit("new-count", count);
+          socket.emit("new-count", count);
         };
         fetcher();
       });
